@@ -15,8 +15,13 @@ N/A
 
 Dependencies
 ------------
+For RHEL 7:
 
 rhel-7-server-rpms is need to install dracut-fips and dracut-fips-aesni
+
+For RHEL 6:
+
+rhel-6-server-optional-rpms and rhel-6-workstation-optional-rpms
 
 Example Playbook
 ----------------
