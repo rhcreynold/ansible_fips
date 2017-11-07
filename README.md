@@ -39,4 +39,3 @@ Author Information
 ------------------
 
 https://github.com/rhcreynold
-# ansible_fips
