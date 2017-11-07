@@ -15,9 +15,12 @@ N/A
 
 Dependencies
 ------------
+
+To install dracut-fips and dracut-fips-aesni you need the following repositories:
+
 For RHEL 7:
 
-rhel-7-server-rpms is need to install dracut-fips and dracut-fips-aesni
+rhel-7-server-rpms
 
 For RHEL 6:
 
