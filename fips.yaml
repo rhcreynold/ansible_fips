@@ -1,0 +1,6 @@
+# file: 80053.yaml
+---
+- hosts: all
+  become: yes
+  roles:
+    - ansible.fips
