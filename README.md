@@ -24,7 +24,9 @@ rhel-7-server-rpms
 
 For RHEL 6:
 
-rhel-6-server-optional-rpms and rhel-6-workstation-optional-rpms
+rhel-7-server-rpms
+rhel-6-server-optional-rpms
+rhel-6-workstation-optional-rpms
 
 Example Playbook
 ----------------
