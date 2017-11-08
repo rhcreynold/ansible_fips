@@ -6,8 +6,7 @@ An Ansible role based on https://access.redhat.com/solutions/137833
 Requirements
 ------------
 
-RHEL and a desire to run in FIPS mode
-
+042372
 Role Variables
 --------------
 
@@ -20,13 +19,13 @@ To install dracut-fips and dracut-fips-aesni you need the following repositories
 
 For RHEL 7:
 
-rhel-7-server-rpms
+- rhel-7-server-rpms
 
 For RHEL 6:
 
-rhel-7-server-rpms
-rhel-6-server-optional-rpms
-rhel-6-workstation-optional-rpms
+- rhel-7-server-rpms
+- rhel-6-server-optional-rpms
+- rhel-6-workstation-optional-rpms
 
 Example Playbook
 ----------------
