@@ -6,7 +6,6 @@ An Ansible role based on https://access.redhat.com/solutions/137833
 Requirements
 ------------
 
-042372
 Role Variables
 --------------
 
