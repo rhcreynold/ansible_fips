@@ -59,5 +59,14 @@
   register: boot_cmd
   failed_when: boot_cmd.rc != 0
 
+- name: Adding FIPS to the grub
+  shell: "sed -i \'/^GRUB_CMDLINE_LINUX=/s/\"$/ fips=1\"/\' /etc/default/grub"
+  when: ansible_distribution_major_version == "7"
+
+- name: Get UUID and set it in the grub
+  shell: 'uuid=$(findmnt -no uuid /boot) ; [[ -n $uuid ]] && sed -i "/^GRUB_CMDLINE_LINUX=/s/\"$/ boot=UUID=${uuid}\"/" /etc/default/grub'
+  when: ansible_distribution_major_version == "7"
+
+
 - name: Reboot server
   command: /sbin/reboot
