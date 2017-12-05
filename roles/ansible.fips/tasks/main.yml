@@ -46,12 +46,27 @@
 
 - name: Rebuild initramfs
   shell: 'dracut'
+  register: dracut_cmd
+  failed_when: dracut_cmd.rc != 0
 
 - name: Edit the Kernel to include FIPS argument
   shell: 'grubby --update-kernel=$(grubby --default-kernel) --args=fips=1'
+  register: grubby_cmd
+  failed_when: grubby_cmd.rc != 0
 
-- name: Set the boot argument
+- name: Check for UUID and Set the boot argument
   shell: "uuid=$(findmnt -no uuid /boot) ; [[ -n $uuid ]] && grubby --update-kernel=$(grubby --default-kernel) --args=boot=UUID=${uuid}"
+  register: boot_cmd
+  failed_when: boot_cmd.rc != 0
+
+- name: Adding FIPS to the grub
+  shell: "sed -i \'/^GRUB_CMDLINE_LINUX=/s/\"$/ fips=1\"/\' /etc/default/grub"
+  when: ansible_distribution_major_version == "7"
+
+- name: Get UUID and set it in the grub
+  shell: 'uuid=$(findmnt -no uuid /boot) ; [[ -n $uuid ]] && sed -i "/^GRUB_CMDLINE_LINUX=/s/\"$/ boot=UUID=${uuid}\"/" /etc/default/grub'
+  when: ansible_distribution_major_version == "7"
+
 
 - name: Reboot server
   command: /sbin/reboot
